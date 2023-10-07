@@ -22,6 +22,8 @@ class HomeController extends Controller
 
     public function upload(FileUploadRequest $request): RedirectResponse
     {
+        $this->file->saveRecord($request);
+
         return to_route('home');
     }
 }
