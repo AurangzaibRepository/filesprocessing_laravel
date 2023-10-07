@@ -16,4 +16,11 @@ class FileUploadRequest extends FormRequest
             ],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'required' => 'File is required',
+        ];
+    }
 }
