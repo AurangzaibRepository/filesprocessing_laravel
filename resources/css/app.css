@@ -25,7 +25,7 @@ body {
     height: 92%;
 }
 
-#dv-fileupload {
+.box {
     background: #fff;
     border-radius: 8px;
     box-shadow: 4px 5px 5px lightblue;
