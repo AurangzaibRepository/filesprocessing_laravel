@@ -9,6 +9,14 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($data as $key => $value)
+            <tr>
+                <td>{{ ++$key }}</td>
+                <td>{{ $value->created_at }}</td>
+                <td>{{ $value->name }}</td>
+                <td>{{ $value->status }}</td>
+            </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
