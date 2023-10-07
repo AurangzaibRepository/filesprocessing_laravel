@@ -6,7 +6,7 @@
     <div class="col-md-10">
         {{ Form::file('input-file') }}
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 justify-content-end d-flex">
         {{ Form::submit('Upload', ['class' => 'btn btn-primary']) }}
     </div>
 </div>
