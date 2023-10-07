@@ -6,4 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class FileRecord extends Model
 {
+    protected $fillable = [
+        'unique_key',
+        'product_title',
+        'product_decription',
+        'style_no',
+        'sanmar_mainframe_color',
+        'size',
+        'color_name',
+        'piece_price',
+        'file_id',
+    ];
 }
