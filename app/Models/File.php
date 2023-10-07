@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Jobs\ProcessFile;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
@@ -44,16 +45,19 @@ class File extends Model
             'name' => $fileObject->getClientOriginalName(),
         ]);
 
-        $this->saveFile($fileObject, $file->id);
+        $this->saveFile($fileObject, $file);
     }
 
-    private function saveFile($fileObject, int $id): void
+    private function saveFile($fileObject, File $file): void
     {
         $fileBaseName = Str::of($fileObject->getClientOriginalName())->explode('.')[0];
+        $fileName = "{$fileBaseName}_{$file->id}.{$fileObject->getClientOriginalExtension()}";
 
         $fileObject->move(
             public_path('files'),
-            "{$fileBaseName}_{$id}.{$fileObject->getClientOriginalExtension()}"
+            $fileName
         );
+
+        ProcessFile::dispatch($file, $fileName);
     }
 }
