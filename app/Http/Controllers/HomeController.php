@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use App\Http\Requests\FileUploadRequest;
 use App\Models\File;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -19,7 +18,7 @@ class HomeController extends Controller
     {
         $listing = $this->file->getList();
 
-        return view("home.index", [
+        return view('home.index', [
             'data' => $listing,
         ]);
     }

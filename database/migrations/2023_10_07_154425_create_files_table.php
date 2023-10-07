@@ -17,7 +17,7 @@ return new class extends Migration
                 'failed',
                 'completed',
             ])
-            ->default('pending');
+                ->default('pending');
             $table->timestamps();
         });
     }
