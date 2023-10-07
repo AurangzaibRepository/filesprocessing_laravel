@@ -17,7 +17,11 @@ class HomeController extends Controller
 
     public function index(): view
     {
-        return view("home.index");
+        $listing = $this->file->getList();
+
+        return view("home.index", [
+            'data' => $listing,
+        ]);
     }
 
     public function upload(FileUploadRequest $request): RedirectResponse
