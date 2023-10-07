@@ -1,4 +1,4 @@
-<div class="mt-5 box">
+<div class="mt-5 box ps-3 pe-3">
     <table class="table">
         <thead>
             <tr>
