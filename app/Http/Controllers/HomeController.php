@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use App\Http\Requests\FileUploadRequest;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
         return view("home.index");
     }
 
-    public function upload(): RedirectResponse
+    public function upload(FileUploadRequest $request): RedirectResponse
     {
         return to_route('home');
     }
