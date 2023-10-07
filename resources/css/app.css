@@ -35,3 +35,16 @@ body {
 .btn {
     padding: 4px 12px;
 }
+
+table th {
+    font-weight: 600;
+}
+
+table td {
+    font-size: 15.5px;
+    font-weight: normal;
+}
+
+table tr th:first-child {
+    width: 8%;
+}
