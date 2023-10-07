@@ -2,7 +2,10 @@
 
 @section('contents')
 {{ Form::open(['route' => 'fileUpload']) }}
+
 <div id="dv-fileupload" class="row box">
+    @include('partials.errors')
+
     <div class="col-md-10">
         {{ Form::file('input-file') }}
     </div>
@@ -10,6 +13,7 @@
         {{ Form::submit('Upload', ['class' => 'btn btn-primary']) }}
     </div>
 </div>
+
 {{ Form::close() }}
 
 @include('home.filelist')
