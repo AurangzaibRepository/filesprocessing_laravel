@@ -11,4 +11,6 @@
     </div>
 </div>
 {{ Form::close() }}
+
+@include('filelist')
 @endsection
