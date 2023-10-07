@@ -18,6 +18,7 @@ class FileUploadRequest extends FormRequest
     {
         return [
             'required' => 'File is required',
+            'mimes' => 'File must be csv type',
         ];
     }
 }
