@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 
 class File extends Model
 {
@@ -12,6 +13,13 @@ class File extends Model
         'name',
         'status',
     ];
+
+    public function getList(): Collection
+    {
+        $data = $this->orderByDesc('id')->get();
+
+        return $data;
+    }
 
     public function saveRecord(Request $request): void
     {
