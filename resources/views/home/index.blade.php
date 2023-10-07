@@ -1,13 +1,13 @@
 @extends('layouts.main')
 
 @section('contents')
-{{ Form::open(['route' => 'fileUpload']) }}
+{{ Form::open(['route' => 'fileUpload', 'files' => 'true']) }}
 
 <div id="dv-fileupload" class="row box">
     @include('partials.errors')
 
     <div class="col-md-10">
-        {{ Form::file('input-file') }}
+        {{ Form::file('inputfile') }}
     </div>
     <div class="col-md-2 justify-content-end d-flex">
         {{ Form::submit('Upload', ['class' => 'btn btn-primary']) }}
