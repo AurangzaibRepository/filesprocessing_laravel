@@ -12,9 +12,13 @@ use Illuminate\Queue\SerializesModels;
 class ProcessFile implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    private $fileId;
+    private $fileName;
 
-    public function __construct()
+    public function __construct($fileId, $fileName)
     {
+        $this->fileId = $fileId;
+        $this->fileName = $fileName;
     }
 
     public function handle(): void
