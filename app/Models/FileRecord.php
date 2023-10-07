@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class FileRecord extends Model
 {
@@ -17,4 +18,9 @@ class FileRecord extends Model
         'piece_price',
         'file_id',
     ];
+
+    public function file(): Relation
+    {
+        return $this->belongsTo(File::class);
+    }
 }
