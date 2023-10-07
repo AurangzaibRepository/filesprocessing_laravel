@@ -2,7 +2,7 @@
 
 @section('contents')
 {{ Form::open(['route' => 'fileUpload']) }}
-<div id="dv-fileupload" class="row">
+<div id="dv-fileupload" class="row box">
     <div class="col-md-10">
         {{ Form::file('input-file') }}
     </div>
