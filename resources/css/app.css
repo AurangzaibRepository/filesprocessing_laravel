@@ -1,0 +1,29 @@
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+    height: 100%;
+}
+
+.dv-main {
+    height: 100%;
+}
+
+#dv-navbar {
+    background-color: #5585ff;
+    color: #fff;
+    font-size: 20px;
+    height: 8%;
+}
+
+#dv-contents {
+    height: 92%;
+}
+
+.btn {
+    padding: 4px 12px;
+}
