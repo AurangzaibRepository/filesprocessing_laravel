@@ -5,8 +5,9 @@ html {
 }
 
 body {
-    margin: 0px;
+    background-color: #F8F8F8;
     height: 100%;
+    margin: 0px;
 }
 
 .dv-main {
@@ -22,6 +23,13 @@ body {
 
 #dv-contents {
     height: 92%;
+}
+
+#dv-fileupload {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 4px 5px 5px lightblue;
+    padding: 20px 10px;
 }
 
 .btn {
