@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class File extends Model
 {
@@ -13,6 +15,13 @@ class File extends Model
         'name',
         'status',
     ];
+
+    protected function createdAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d-m-Y g:i A'),
+        );
+    }
 
     public function getList(): Collection
     {
