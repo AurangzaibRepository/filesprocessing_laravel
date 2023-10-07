@@ -48,3 +48,14 @@ table td {
 table tr th:first-child {
     width: 8%;
 }
+
+.alert {
+    font-size: 14px;
+    padding: 10px 15px;
+}
+
+.alert ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
