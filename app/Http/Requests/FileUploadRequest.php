@@ -10,10 +10,7 @@ class FileUploadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'input-file' => [
-                'required',
-                File::types(['csv']),
-            ],
+            'inputfile' => 'required|file|mimes:csv,txt',
         ];
     }
 
