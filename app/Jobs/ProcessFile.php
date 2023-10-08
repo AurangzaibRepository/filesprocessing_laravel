@@ -32,7 +32,7 @@ class ProcessFile implements ShouldQueue
         $this->file->updateStatus($this->file->id, 'completed');
     }
 
-    private function addRecords(array $data)
+    private function addRecords(array $data): void
     {
         foreach ($data as $row) {
             $productTitle = FormatHelper::cleanString($row['PRODUCT_TITLE'], 'UTF-8');
