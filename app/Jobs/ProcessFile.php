@@ -27,9 +27,7 @@ class ProcessFile implements ShouldQueue
     public function handle(): void
     {   
         $this->file->updateStatus($this->file->id, 'processing');
-        $data = FileHelper::parseFile($this->fileName);
-
-        FileRecord::addRecords($data);
+        FileHelper::parseFile($this->fileName);
 
         $this->file->updateStatus($this->file->id, 'completed');
     }
