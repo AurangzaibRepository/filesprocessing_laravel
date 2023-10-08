@@ -12,7 +12,8 @@ return new class extends Migration
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
             $table->id();
-            $table->bigInteger('unique_key');
+            $table->bigInteger('unique_key')
+                ->unique();
             $table->string('product_title', 300);
             $table->text('product_description');
             $table->string('style_no', 20);
@@ -20,7 +21,6 @@ return new class extends Migration
             $table->string('size', 10);
             $table->string('color_name', 30);
             $table->double('piece_price', 6, 2);
-            $table->foreignId('file_id');
             $table->timestamps();
         });
     }
