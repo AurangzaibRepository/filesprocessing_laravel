@@ -8,6 +8,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use App\Models\FileRecord;
+use FormatHelper;
 
 class ProcessFile implements ShouldQueue
 {
@@ -20,6 +22,56 @@ class ProcessFile implements ShouldQueue
     }
 
     public function handle(): void
+    {   
+        $this->file->updateStatus($this->file->id, 'processing');
+
+        $filePath = public_path('\files\\').$this->fileName;
+        $fileReader = fopen($filePath, 'r');
+
+        $data = [];
+        $header = fgetcsv($fileReader);
+
+        while ($row = fgetcsv($fileReader)) {
+            $data[] = array_combine($header, $row);
+        }
+
+        fclose($fileReader);
+
+        $this->addRecords($data);
+
+        $this->file->updateStatus($this->file->id, 'completed');
+    }
+
+    private function addRecords(array $data)
     {
+        foreach ($data as $row) {
+            $productTitle = FormatHelper::cleanString($row['PRODUCT_TITLE'], 'UTF-8');
+            $productDescription = FormatHelper::cleanString($row['PRODUCT_DESCRIPTION'], 'UTF-8');
+
+            $attributeList = [
+                'unique_key' => $row['UNIQUE_KEY'],
+                'product_title' => $productTitle,
+                'product_description' => $productDescription,
+                'style_no' => $row['STYLE#'],
+                'sanmar_mainframe_color' => $row['SANMAR_MAINFRAME_COLOR'],
+                'size' => $row['SIZE'],
+                'color_name' => $row['COLOR_NAME'],
+                'piece_price' => $row['PIECE_PRICE'],
+            ];
+
+            FileRecord::upsert([
+                $attributeList,
+                $attributeList,
+            ],
+            [
+                'product_title',
+                'product_description',
+                'style_no',
+                'sanmar_mainframe_color',
+                'size',
+                'color_name',
+                'piece_price',
+            ]);
+        }
     }
 }
