@@ -21,9 +21,9 @@ class FileHelper
 
             fclose($fileReader);
         })
-            ->chunk(100)
+            ->chunk(500)
             ->each(function ($rows) use ($header) {
-                $data = null;
+                $data = [];
 
                 foreach ($rows as $row) {
                     $data = array_combine($header, $row);
