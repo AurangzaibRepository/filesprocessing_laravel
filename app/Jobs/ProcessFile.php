@@ -3,14 +3,12 @@
 namespace App\Jobs;
 
 use App\Models\File;
+use FileHelper;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use App\Models\FileRecord;
-use FormatHelper;
-use FileHelper;
 
 class ProcessFile implements ShouldQueue
 {
@@ -25,7 +23,7 @@ class ProcessFile implements ShouldQueue
     }
 
     public function handle(): void
-    {   
+    {
         $this->file->updateStatus($this->file->id, 'processing');
         FileHelper::parseFile($this->fileName);
 

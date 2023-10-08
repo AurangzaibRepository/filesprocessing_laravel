@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use App\Models\FileRecord;
 
 class File extends Model
 {
