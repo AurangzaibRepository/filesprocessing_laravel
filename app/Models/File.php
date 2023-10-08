@@ -62,7 +62,7 @@ class File extends Model
         ProcessFile::dispatch($file, $fileName);
     }
 
-    public function updateStatus(int $id, string $status)
+    public function updateStatus(int $id, string $status): void
     {
         $this->where('id', $id)
             ->update([
