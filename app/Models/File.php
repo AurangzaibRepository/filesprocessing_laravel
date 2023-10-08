@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use App\Models\FileRecord;
 
 class File extends Model
 {
@@ -59,5 +60,13 @@ class File extends Model
         );
 
         ProcessFile::dispatch($file, $fileName);
+    }
+
+    public function updateStatus(int $id, string $status)
+    {
+        $this->where('id', $id)
+            ->update([
+                'status' => $status,
+            ]);
     }
 }
