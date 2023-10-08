@@ -11,7 +11,7 @@ class Kernel extends ConsoleKernel
 
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->job(new ProcessFile)->everyFiveMinutes();
+        //$schedule->job(new ProcessFile)->everyFiveMinutes();
     }
 
     protected function commands(): void
