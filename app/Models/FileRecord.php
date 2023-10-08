@@ -10,7 +10,7 @@ class FileRecord extends Model
     protected $fillable = [
         'unique_key',
         'product_title',
-        'product_decription',
+        'product_description',
         'style_no',
         'sanmar_mainframe_color',
         'size',
