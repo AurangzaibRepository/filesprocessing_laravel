@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\FileRecord;
 use FormatHelper;
+use FileHelper;
 
 class ProcessFile implements ShouldQueue
 {
@@ -24,18 +25,7 @@ class ProcessFile implements ShouldQueue
     public function handle(): void
     {   
         $this->file->updateStatus($this->file->id, 'processing');
-
-        $filePath = public_path('\files\\').$this->fileName;
-        $fileReader = fopen($filePath, 'r');
-
-        $data = [];
-        $header = fgetcsv($fileReader);
-
-        while ($row = fgetcsv($fileReader)) {
-            $data[] = array_combine($header, $row);
-        }
-
-        fclose($fileReader);
+        $data = FileHelper::parseFile($this->fileName);
 
         $this->addRecords($data);
 
