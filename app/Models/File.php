@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\FileStatusUpdate;
 use App\Jobs\ProcessFile;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -67,5 +68,7 @@ class File extends Model
             ->update([
                 'status' => $status,
             ]);
+
+        FileStatusUpdate::dispatch();
     }
 }
